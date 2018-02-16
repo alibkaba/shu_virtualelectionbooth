@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" content="text/html" http-equiv="Content-Type">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	<script src="main.js" type="text/javascript"></script>
+    <title>Welcome</title>
+</head>
+<body>
+<button onclick="Reset_JS();">Reset</button>
+<br>
+<!--http://www.aspsnippets.com/Red/Articles/Numeric-Validation-Accept-only-numeric-values-numbers-in-TextBox-using-JavaScript.aspx
+-->
+Type in your ID <input maxlength="10" type="text" id="Voter_ID" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
+<span id="error" style="color: Red; display: none">* Input digits (0 - 9)</span><br>
+<script type="text/javascript">
+//Below will make sure the textfield above only takes digits.
+var specialKeys = new Array();
+specialKeys.push(8); //Backspace
+function IsNumeric(e) {
+	var keyCode = e.which ? e.which : e.keyCode
+	var ret = ((keyCode >= 48 && keyCode <= 57) || specialKeys.indexOf(keyCode) != -1);
+	document.getElementById("error").style.display = ret ? "none" : "inline";
+	return ret;
+}
+</script>
+<form action="">
+<input type="radio" name="voting_list" id="Red">Team Red<br>
+<input type="radio" name="voting_list" id="Blue">Team Blue<br>
+</form>
+<button onclick="Start();">Vote</button>
+<br>
+<button onclick="Results();">View Results</button>
+<br>
+<br>
+All messages weren't written as alerts, so you must open up the browser's console to see results
+</body>
+</html>
